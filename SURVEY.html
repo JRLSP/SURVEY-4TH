@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Survey Form</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body align="center" bgcolor="#5DBB63">
+  <h1>Survey Form</h1>
+  <form id="surveyForm">
+    <div class="question">
+      <label for="q1">Question 1: What is your favorite color?</label>
+      <br>
+      <input type="text" id="q1" name="q1">
+    </div>
+    <br>
+    <div class="question">
+      <label for="q2">Question 2: How often do you exercise?</label>
+      <br>
+      <select id="q2" name="q2">
+        <option value="daily">Daily</option>
+        <option value="weekly">Weekly</option>
+        <option value="monthly">Monthly</option>
+        <option value="rarely">Rarely</option>
+      </select>
+    </div>
+    <br>
+    <div class="question">
+      <label for="q3">Question 3: Do you prefer reading books or playing games?</label>
+      <br>
+      <input type="radio" id="q3-read" name="q3" value="read">
+      <label for="q3-read">Read</label>
+      <input type="radio" id="q3-play" name="q3" value="play">
+      <label for="q3-play">Play</label>
+    </div>
+    <br>
+    <div class="question">
+      <label for="q4">Question 4: Who is your favorite artist? (either International or Local)</label>
+      <br>
+      <input type="text" id="q4" name="q4">
+    </div>
+    <br>
+    <div class="question">
+      <label for="q5">Question 5: How do you go to school?</label>
+      <br>
+      <select id="q5" name="q5">
+        <option value="walking">Walking</option>
+        <option value="commuting">Commuting</option>
+        <option value="pt">Personal Transportation</option>
+      </select>
+    </div>
+    <br>
+    <div class="question">
+      <label for="q6">Question 6: What is your favorite type of music?</label>
+      <br>
+      <input type="radio" id="q6-pop" name="q6" value="pop">
+      <label for="q6-pop">Pop</label>
+      <input type="radio" id="q6-rock" name="q6" value="rock">
+      <label for="q6-rock">Rock</label>
+      <input type="radio" id="q6-hh" name="q6" value="hiphop">
+      <label for="q6-hh">Hip-Hop</label>
+      <input type="radio" id="q6-classical" name="q6" value="classical">
+      <label for="q6-classical">Classical</label>
+    </div>
+    <br>
+    <div class="question">
+      <label for="q7">Question 7: What is your favorite music?</label>
+      <br>
+      <input type="text" id="q7" name="q7">
+    </div>
+    <br>
+    <div class="question">
+      <label for="q8">Question 8: Which Social Media Platform do you use the most?</label>
+      <br>
+      <select id="q8" name="q8">
+        <option value="fb">Facebook</option>
+        <option value="ig">Instagram</option>
+        <option value="tt">Tiktok</option>
+        <option value="yt">Youtube</option>
+      </select>
+    </div>
+    <br>
+    <div class="question">
+      <label for="q9">Question 9: How often do you eat fast food?</label>
+      <br>
+      <input type="radio" id="q9-rare" name="q9" value="rarely">
+      <label for="q9-rare">Rarely</label>
+      <input type="radio" id="q9-o" name="q9" value="occasionally">
+      <label for="q9-o">Occasionally</label>
+      <input type="radio" id="q9-w" name="q9" value="weekly">
+      <label for="q9-w">Once a week</label>
+      <input type="radio" id="q9-n" name="q9" value="never">
+      <label for="q9-n">Never</label>
+    </div>
+    <br>
+    <div class="question">
+      <label for="q10">Question 10: What is your favorite movie or series?</label>
+      <br>
+      <input type="text" id="q10" name="q10">
+    </div>
+    <br>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById('surveyForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Get form data
+      var formData = new FormData(event.target);
+
+      // Convert form data to JSON
+      var jsonData = {};
+      for (var pair of formData.entries()) {
+        jsonData[pair[0]] = pair[1];
+      }
+
+      // Store form data locally
+      localStorage.setItem('surveyData', JSON.stringify(jsonData));
+
+      // Show success message
+      alert('Survey submitted successfully!');
+    });
+  </script>
+</body>
+</html>
